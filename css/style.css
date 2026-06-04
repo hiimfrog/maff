@@ -1,0 +1,1160 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'Pretendard';
+    font-size: 18px;
+    color: #333;
+
+}
+
+
+@font-face {
+    font-family: 'TtTogether';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* header wrap !!!!! */
+.header_wrap {
+    background-color: #fff;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    box-shadow: 0px 5px 8px #0000002c;
+}
+
+.header {
+    box-sizing: border-box;
+    width: 1320px;
+    height: 90px;
+    margin: 0px auto;
+    padding-top: 20px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.gnb {
+    display: flex;
+
+}
+
+.gnb>li {
+    padding-left: 140px;
+}
+
+.gnb>li>a {
+    color: #333;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 16px 0px 30px;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gnb>li>a:hover {
+    transform: translateY(-3px);
+    color: #344161;
+}
+
+.gnb>li>a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #748DB5;
+    /* 올라오는 밑줄색 */
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+}
+
+.gnb>li>a:hover::before {
+    transform: scaleY(1);
+}
+
+/* ★★★★ main visual ★★★★ */
+#main_visual_wrap {
+    height: 920px;
+    position: relative;
+    /* video 기준 */
+}
+
+#main_visual_wrap video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main_visual {
+    width: 1320px;
+    height: 920px;
+    margin: 0px auto;
+    position: relative;
+    /* 본인기준 (z-index 쓰려고) */
+    z-index: 4;
+}
+
+.main_visual img {
+    padding-top: 300px;
+}
+
+/* top button */
+.top_button {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 9;
+    background-color: #F7D6B2;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    text-align: center;
+    padding-top: 11px;
+    font-size: 15px;
+    box-shadow: 3px 3px 3px #0000002c;
+}
+
+.top_button img {
+    transition: transform 0.3s ease;
+}
+
+.top_button:hover img {
+    transform: translateY(-5px);
+}
+
+.top_button:hover {
+    background-color: #facd9d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ★★★★ section 1 (추천상영작) ★★★★ */
+.section_1 {
+    width: 1320px;
+    height: 1000px;
+    margin: 0px auto;
+}
+
+/* section title */
+.section_title {
+    font-size: 40px;
+    font-weight: 700;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.fff {
+    color: #fff;
+}
+
+
+.recommend {
+    width: 1320px;
+    height: 580px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 포스터 아이템 기본 공통 스타일 (부드러운 크기/위치 전환 효과) */
+.poster-item {
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    cursor: url(../img/cursor3.png) 0 0, pointer;
+}
+
+.poster-item:active {
+    /* [클릭 효과] 슬레이트가 '딱!' 하고 닫힌 모양으로 변경 */
+    cursor: url(../img/cursor4.png) 0 0, pointer;
+}
+
+/* 포스터 이미지 자체에만 어두워지는 애니메이션 효과 부여 */
+.poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.poster-img:hover {
+    transform: scale(1.06);
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- 각 상태별 위치 및 크기 지정 (절대 좌표) --- */
+
+/* 1. 왼쪽으로 완전히 숨겨지는 포스터 */
+.poster-item.hidden-left {
+    left: -350px;
+    width: 350px;
+    height: 430px;
+    top: 75px;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* 2. 왼쪽 사이드 포스터 (크기 350x430, 위에서 75px 떨어짐) */
+.poster-item.prev {
+    left: 0;
+    width: 350px;
+    height: 430px;
+    top: 75px;
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 3. 가운데 메인 포스터 (크기 500x580, 위에서 0px) */
+.poster-item.center {
+    left: 410px;
+    /* 사이드 너비 350 + 포스터 간격 60 */
+    width: 500px;
+    height: 580px;
+    top: 0;
+    opacity: 1;
+    z-index: 3;
+}
+
+/* 4. 오른쪽 사이드 포스터 (크기 350x430, 위에서 75px 떨어짐) */
+.poster-item.next {
+    left: 970px;
+    /* 410 + 메인 너비 500 + 포스터 간격 60 */
+    width: 350px;
+    height: 430px;
+    top: 75px;
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 5. 오른쪽으로 완전히 숨겨지는 포스터 */
+.poster-item.hidden-right {
+    left: 1320px;
+    width: 350px;
+    height: 430px;
+    top: 75px;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* 사이드 포스터의 '이미지'만 40% 밝기로 자동 조절 (버튼은 fff 선명함 유지) */
+.poster-item.prev .poster-img,
+.poster-item.next .poster-img {
+    filter: brightness(0.4);
+}
+
+/* 가운데로 온 포스터 이미지는 원래 밝기(100%)로 선명하게 복구 */
+.poster-item.center .poster-img {
+    filter: brightness(1);
+}
+
+
+/* --- ★ 움직임 없는 완벽 고정 버튼 스타일 (24x35, 수평 중앙 290px 배치) --- */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    width: 24px;
+    height: 35px;
+    top: 290px;
+    /* 사이드 포스터 가로 중심선에 완벽 일치 */
+    cursor: pointer;
+    z-index: 10;
+    cursor: url(../img/cursor3.png) 0 0, pointer;
+}
+
+.prev-btn:active,
+.next-btn:active {
+    cursor: url(../img/cursor4.png) 0 0, pointer;
+}
+
+.prev-btn img,
+.next-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 왼쪽 화살표: 왼쪽 사이드 포스터 안쪽 우측에 고정 */
+.prev-btn {
+    left: 306px;
+}
+
+/* 오른쪽 화살표: 오른쪽 사이드 포스터 안쪽 좌측에 고정 */
+.next-btn {
+    right: 306px;
+}
+
+
+/* --- ★ 설명글 텍스트 박스 (500x150 아래에서 위로 스르륵 차오르는 효과) --- */
+.text-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+
+    /* [기본 숨김 상태] 높이를 0으로 숨겨 포스터 밑바닥에 대기시킵니다 */
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    background: rgba(0, 0, 0, 0.6);
+    /* 투명도 있는 검은 상자 */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* 높이와 패딩이 0.1초 딜레이 후 아래에서 위로 부드럽게 차오르도록 설정 */
+    transition: height 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.1s,
+        padding 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.1s,
+        opacity 0.5s ease-out 0.1s,
+        visibility 0.9s ease-out 0.1s;
+}
+
+/* 가운데 포스터(.center)가 되면 높이가 150px로 위로 열리며 등장 */
+.poster-item.center .text-box {
+    height: 180px;
+    padding: 20px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 요구하신 글자 크기 및 색상 규칙 지정 */
+.text-box .title {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.text-box .meta {
+    font-size: 18px;
+    color: #d4d4d4;
+    /* 두 번째 줄 지정 컬러 */
+    margin-bottom: 10px;
+}
+
+.text-box .desc {
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+/* 박스가 부드럽게 열리는 도중에 글자가 깨져서 임의 줄바꿈되는 현상 방지 */
+.text-box .title,
+.text-box .meta,
+.text-box .desc {
+    width: 460px;
+    /* 500px - 좌우 패딩 40px */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-box .desc {
+    white-space: normal;
+    /* 마지막 줄 설명글은 줄바꿈 허용 */
+}
+
+/* ★★★★ section 2 (상영시간표) ★★★★  */
+.section_2_wrap {
+    background-color: #1E1F24;
+    height: 1080px;
+}
+
+.section_2 {
+    background: url(../img/time.png) no-repeat top 250px left 0;
+    width: 1320px;
+    height: 1080px;
+    margin: 0px auto;
+    position: relative;
+}
+
+
+.date {
+    position: absolute;
+    top: 338px;
+    left: 10px;
+
+}
+
+.date li {
+    margin-bottom: 28px;
+    position: relative;
+    /* date li p 기준 */
+}
+
+.date li img {
+    border-radius: 10px;
+}
+
+.date li p {
+    color: #111;
+    font-weight: 600;
+    position: absolute;
+    text-align: center;
+    top: 36%;
+    left: 24%;
+}
+
+.time {
+    display: flex;
+    margin-bottom: 28px;
+
+}
+
+.time li {
+    margin-right: 71px;
+    height: 171px;
+    transition: text-shadow 0.3s ease;
+}
+
+.time li a:hover p {
+    /* 가로 세로 번짐정도 색상*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+
+    transition: text-shadow 0.3s ease;
+}
+
+.time li a {
+    /* cursor: url(../img/) 40 40, auto; */
+    display: block;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    /* 가상 요소의 기준점 */
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* a 태그 안에 숨겨진 투명한 움짤 레이어 (공통) */
+.time li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.5s ease-out;
+    transform: scale(1);
+
+}
+
+.time li a:hover::before {
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+/* sun */
+.sun {
+    margin-left: 277px;
+    margin-top: 90px;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 0px 0px 15px;
+    color: #fff;
+}
+
+.rocation {
+    padding: 0px 0px 0px 15px;
+    color: #cccccc;
+}
+
+.running {
+    color: #fff;
+    font-size: 19px;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+
+}
+
+.sun_6 {
+    width: 213px;
+    background: url(../img/sun_six.png) no-repeat center;
+}
+
+.sun_6::before {
+    background: url(../img/gif_aftersun.gif);
+}
+
+.sun_8 {
+    width: 287px;
+    background: url(../img/sun_eight.png) no-repeat center;
+}
+
+.sun_8::before {
+    background: url(../img/gif_water.gif);
+}
+
+.sun_10 {
+    width: 291px;
+    background: url(../img/sun_ten.png) no-repeat center;
+}
+
+.sun_10::before {
+    background: url(../img/gif_oceans.gif);
+}
+
+/* mon */
+.mon {
+    margin-left: 213px;
+}
+
+.mon_5 {
+    width: 278px;
+    background: url(../img/mon_five.png) no-repeat center;
+}
+
+.mon_5::before {
+    background: url(../img/gif_holiday.gif);
+}
+
+.mon_8 {
+    width: 285px;
+    background: url(../img/mon_eight.png) no-repeat center;
+}
+
+.mon_8::before {
+    background: url(../img/gif_mam.gif);
+}
+
+.mon_10 {
+    width: 297px;
+    background: url(../img/mon_ten.png) no-repeat center;
+}
+
+.mon_10::before {
+    background: url(../img/gif_hg.gif);
+}
+
+/* tue */
+.tue {
+    margin-left: 277px;
+}
+
+.tue_6 {
+    width: 213px;
+    background: url(../img/tue_six.png) no-repeat center;
+}
+
+.tue_6::before {
+    background: url(../img/gif_suite.gif);
+}
+
+.tue_8 {
+    width: 224px;
+    background: url(../img/tue_eight.png) no-repeat center;
+}
+
+.tue_8::before {
+    background: url(../img/gif_jojo.gif);
+}
+
+.tue_10 {
+    width: 310px;
+    background: url(../img/tue_ten.png) no-repeat center;
+    margin-left: -10px;
+}
+
+.tue_10::before {
+    background: url(../img/gif_cmbyn.gif);
+}
+
+/*★★★★ section 3 (이벤트) ★★★★ */
+.section_3 {
+    width: 1320px;
+    height: 1000px;
+    margin: 0px auto;
+}
+
+/* title_add는 버튼(이미지) 있는 title, 클릭하면 새 창으로 넘어감 !! */
+/* 아래 설정은 미디어 섹션 오른쪽 버튼 */
+.title_add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1320px;
+    margin: 0 auto;
+}
+
+.title_add img {
+    transition: transform 0.3s ease;
+}
+
+.title_add a {
+    display: inline-block;
+}
+
+.title_add a:hover img {
+    transform: translateX(15px);
+}
+
+.section_title img {
+    margin-left: 15px;
+    padding-bottom: 3px;
+}
+
+.event_box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.event_img_box {
+    width: 630px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 35px;
+}
+
+.event_img_box img {
+
+    transition: 0.6s;
+}
+
+.event_img_box:hover img {
+    transform: scale(1.07);
+    transition: all 0.6s;
+
+}
+
+.event_text_box {
+    box-sizing: border-box;
+    padding: 30px 0px 25px 20px;
+    font-weight: 500;
+}
+
+.event_text_box a {
+    display: inline-block;
+}
+
+.event_b {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.event_s {
+    font-size: 16px;
+    color: #7d7d7d;
+    font-weight: 400;
+    padding-top: 3px;
+}
+
+.event {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ★★★★ moving text (흘러가는 글씨) ★★★★ */
+.moving_text {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.3s;
+    font-size: 45px;
+    color: #6E89B4;
+    height: 120px;
+    box-sizing: border-box;
+    padding-top: 30px;
+    border: 1px solid #3B4C71;
+    font-family: 'TtTogether';
+
+}
+
+@keyframes moving_textLoop {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.moving_text p {
+    animation: moving_textLoop 8s linear infinite;
+    padding-right: 40px;
+}
+
+/* ★★★★ mini banner (굿즈) ★★★★ */
+.mini_banner_wrap {
+    width: 1320px;
+    height: 400px;
+    margin: 0px auto;
+    box-sizing: border-box;
+    padding-top: 100px;
+    position: relative;
+    /* button 기준 */
+}
+
+.mini_banner {
+    width: 1320px;
+    height: 200px;
+    background: url(../img/mini_banner_bg.png) no-repeat center;
+}
+
+.mini_banner img {
+    float: right;
+}
+
+.mini_title {
+    line-height: 40px;
+    padding: 30px 0px 0px 55px;
+    font-size: 38px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.mini_text {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.button a {
+    width: 100px;
+    height: 42px;
+    padding-top: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 2px solid #fff;
+    border-radius: 22.5px;
+    position: absolute;
+    top: 230px;
+    left: 50px;
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+
+}
+
+.button a:hover {
+    background-color: #F7D6B2;
+    color: #293145;
+    font-weight: 600;
+    border: 2px solid #293145;
+}
+
+/* ★★★★ section_4 (FAQ) ★★★★ */
+.section_4 {
+    width: 1320px;
+    height: 900px;
+    margin: 0px auto;
+}
+
+/* faq 아코디언 */
+.faq {
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    width: 1320px;
+    margin: auto;
+    list-style: none;
+}
+
+/* 각 질문 상자 (간격 25px, 외곽선 2px #bbb) */
+.faq>li {
+    margin-bottom: 25px;
+    border: 2px solid #bbb;
+    border-radius: 20px;
+    /* 부드러운 곡률 추가 */
+    background-color: #fff;
+    overflow: hidden;
+    /* 열릴 때 테두리 밖으로 내용이 빠져나가지 않도록 */
+}
+
+/* 질문 타이틀 바 (높이 86px) */
+.faq_title {
+    width: 100%;
+    height: 86px;
+    display: flex;
+    align-items: center;
+    /* 세로 가운데 정렬 */
+    justify-content: space-between;
+    /* 양 끝 정렬 */
+    padding: 0 30px;
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+}
+
+.faq_title:hover {
+    background-color: #b8c3d4;
+}
+
+.faq>li.active .faq_title {
+    background-color: #f5f5f5;
+}
+
+
+.faq>li.active .faq_title:hover {
+    background-color: #f5f5f5;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 동그라미 Q (60x60) */
+.faq_title .q {
+    width: 60px;
+    height: 60px;
+    background-color: #5D6D8F;
+    /* 스크린샷과 유사한 네이비/블루 계열 */
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Pretendard';
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    /* 크기 고정 */
+}
+
+/* 질문 텍스트 (24px, #333) */
+.faq_title .text {
+    font-family: 'pretendard';
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    flex-grow: 1;
+    /* 남은 공간 채우기 */
+}
+
+/* 화살표 아이콘 영역 및 애니메이션 */
+.faq_title .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.faq_title .arrow img {
+    transition: transform 0.3s ease;
+    /* 화살표가 0.3초 동안 부드럽게 회전 */
+}
+
+/* 활성화되었을 때(열렸을 때) 화살표 뒤집기 */
+.faq>li.active .faq_title .arrow img {
+    transform: rotate(180deg);
+    /* 180도 회전하여 위를 보게 만듦 */
+}
+
+/* 답변 영역 (기본적으로 숨김, 18px, #333) */
+.faq_content {
+    display: none;
+    /* 제이쿼리 slideToggle을 위해 기본 숨김 */
+    padding: 25px 30px 35px 110px;
+    /* 왼쪽 Q 아이콘 위치만큼 여백 부여 */
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    border-top: 1px solid #f0f0f0;
+    /* 내용 구분을 위한 얇은 선 */
+}
+
+/* ★★★★ section 5 ★★★★ */
+.section_5_wrap {
+    height: 1254px;
+    background-color: #1E1F24;
+    position: relative;
+    z-index: 1;
+    /* 푸터보다 레이어를 낮게 깔아줍니다 */
+
+    /*아래쪽 마진을 음수(-)로 주어 푸터를 위로 당겨옵니다. */
+
+    margin-bottom: -200px;
+}
+
+.section_5 {
+    width: 1320px;
+    height: 1254px;
+    margin: 0px auto;
+}
+
+/* 버튼 우측 정렬 */
+.media-header {
+    display: flex;
+    justify-content: flex-end;
+    /* 오른쪽 끝으로 밀기 */
+    margin-bottom: 30px;
+    /* 사진과의 간격 */
+}
+
+
+/* 60x60 버튼 설정 */
+.media-controls {
+    display: flex;
+    gap: 20px;
+    /* 버튼 두 개 사이의 간격 */
+}
+
+/* 60x60 버튼 크기 고정 */
+.media-prev,
+.media-next {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.media-prev img {
+    padding: 15px 15px;
+}
+
+.media-next img {
+    padding: 15px 20px;
+}
+
+.media-prev:hover,
+.media-next:hover {
+    background-color: #F7D6B2;
+}
+
+/* 슬라이더 영역 (1320px 넘치면 안 보이게 숨김) */
+.media-slider-wrap {
+    width: 1320px;
+    overflow: hidden;
+}
+
+/* 실제로 기차처럼 길게 늘어서서 이동할 트랙 */
+.media-track {
+    display: flex;
+    gap: 30px;
+    /* 사진 사이 간격 (420*3=1260, 1320-1260=60. 60/2=30px) */
+    transition: transform 0.5s ease-in-out;
+    /* 부드럽게 넘어가기 */
+}
+
+/* 개별 사진 아이템 */
+.media-item {
+    width: 420px;
+
+    flex-shrink: 0;
+    /* 크기 쪼그라들지 않게 고정 */
+
+}
+
+.media-thumb {
+    width: 420px;
+    height: 520px;
+    overflow: hidden;
+}
+
+.media-item img {
+    width: 420px;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+    cursor: url(../img/cursor2.png) 40 40, auto;
+    transition: transform 0.5s ease;
+
+}
+
+.media-item img:active {
+    cursor: url(../img/cursor1.png) 40 40, auto;
+}
+
+.media-item img:hover {
+    transform: scale(1.06);
+}
+
+/* 텍스트 스타일 */
+.media-text {
+    margin-top: 20px;
+    color: #fff;
+    /* 바탕이 어두우니 글씨는 흰색 */
+}
+
+.media-sub {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.media-tit {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* footer */
+
+.footer-wrap {
+    width: 100%;
+    height: 540px;
+    display: flex;
+    /* ◀ 2. 파도와 본문을 세로로 정렬하기 위함 */
+    flex-direction: column;
+    position: relative;
+    margin-top: auto;
+    z-index: 8;
+}
+
+/* 
+   wave design 
+*/
+.footer-wrap svg {
+    display: block;
+    width: 100%;
+    height: 150px;
+    /* 파도 부분 높이 150px */
+    flex-shrink: 0;
+    /* 푸터 높이가 바뀌어도 파도가 찌그러지지 않게 고정 */
+}
+
+/*  푸터 바디 (나머지 높이 채우기)
+ */
+.footer-body {
+    flex: 1;
+    /* ◀ 3. 전체 540px 중 파도(150px)를 제외한 나머지(390px)를 자동으로 채움 */
+    background-color: #363E53;
+    /* ◀ 4. 중요! 앞파도 색상(#363E53)과 똑같이 맞춰야 파도와 본문이 자연스럽게 이어집니다. */
+
+}
+
+/* wave animation */
+.wave {
+    animation: wave 4s linear infinite;
+}
+
+#wave2 {
+    fill: #293145;
+    animation-duration: 5s;
+    animation-direction: reverse;
+}
+
+#wave1 {
+    fill: #363E53;
+    /* 이 색상과 .footer-body의 배경색이 같아야 합니다 */
+    animation-duration: 3s;
+}
+
+@keyframes wave {
+    to {
+        transform: translateX(-120px);
+    }
+}
+
+/* footer content */
+.footer-content {
+    box-sizing: border-box;
+    padding-top: 70px;
+    width: 1320px;
+    margin: 0px auto;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_name {
+    font-weight: 600;
+    font-size: 48px;
+}
+
+.footer_date {
+    font-size: 38px;
+}
+
+.footer_copy {
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 60px;
+}
+
+.footer_link {
+    padding-top: 30px;
+    padding-right: 50px;
+}
+
+.footer_link_list li {
+    line-height: 40px;
+}
+
+.footer_link_list a {
+    display: block;
+    font-weight: 600;
+}
+
+.footer_link_list a:hover {
+    color: #F7D6B2;
+}
+
+/* 이미지 모달 팝업 스타일 */
+.image-modal {
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* 반투명 검은 배경 */
+    z-index: 9999;
+    /* 화면 제일 위로 */
+    cursor: pointer;
+}
+
+
+
+/* 팝업 안의 이미지 화면 정중앙 배치 */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 기존에 있던 max-width 제한을 지워서 더 커질 수 있게 풀어줍니다 */
+}
+
+.modal-img {
+    /* ★ 핵심: 원래 크기를 무시하고 무조건 화면 세로 길이의 80%까지 큼지막하게 늘림 */
+    height: 80vh;
+
+    /* 세로가 커진 비율에 맞춰서 가로도 찌그러지지 않게 자동 조절 */
+    width: auto;
+
+    /* 혹시 모를 안전장치: 모니터 가로 폭을 넘어가지는 않게 제한 */
+    max-width: 95vw;
+
+    object-fit: contain;
+}
