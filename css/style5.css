@@ -1,0 +1,504 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'Pretendard';
+    font-size: 18px;
+    color: #333;
+
+}
+
+/* ★★★ header wrap ★★★*/
+.header_wrap {
+    background-color: #fff;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    box-shadow: 0px 5px 8px #0000002c;
+}
+
+.header {
+    box-sizing: border-box;
+    width: 1320px;
+    height: 90px;
+    margin: 0px auto;
+    padding-top: 20px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.gnb {
+    display: flex;
+    gap: 110px;
+position: relative;
+}
+
+.gnb>li {
+
+    position: relative;
+    /* submenu 기준 */
+    text-align: center;
+}
+
+.gnb>li>a {
+    color: #333;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 30px 10px;
+    text-decoration: none;
+    position: relative;
+    /* .gnb>li>a::before 기준 */
+    transition: all 0.3s ease;
+    margin-top: -14px;
+}
+
+.gnb>li:hover>a {
+    transform: translateY(-3px);
+    color: #344161;
+}
+
+.gnb>li>a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #748DB5;
+    /* 올라오는 밑줄색 */
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+}
+
+.gnb>li:hover>a::before {
+    transform: scaleY(1);
+}
+
+.submenu li a {
+    padding: 20px;
+    display: inline-block;
+    text-align: center;
+
+    font-weight: 600;
+
+
+}
+
+.submenu {
+    border: 1px solid #7d7d7d38;
+    position: absolute;
+    top: 100%;
+    width: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .30s ease, transform .30s ease, visibility .30s ease;
+    visibility: hidden;
+    background-color: #ffffffee;
+}
+
+.submenu li a:hover {
+    color: #344161;
+    /* background: url(../img/gnb2.png) no-repeat right 10px top 5px #fff; */
+    font-weight: 700;
+}
+
+.gnb>li:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.on a {
+    color: #344161 !important;
+}
+
+/* top button */
+.top_button {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 9;
+    background-color: #F7D6B2;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    text-align: center;
+    padding-top: 11px;
+    font-size: 15px;
+    box-shadow: 3px 3px 3px #0000002c;
+}
+
+.top_button img {
+    transition: transform 0.3s ease;
+}
+
+.top_button:hover img {
+    transform: translateY(-5px);
+}
+
+.top_button:hover {
+    background-color: #facd9d;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* section title */
+
+.section_title {
+    font-size: 40px;
+    font-weight: 700;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.fff {
+    color: #fff;
+}
+
+/* ★★★ section 1 (사진) ★★★ */
+
+.section_1 {
+    width: 1320px;
+    height: 1400px;
+    margin: 0px auto;
+    margin-top: 190px;
+}
+
+.photo_box {
+    width: 100%;
+    cursor: url(../img/cursor5.png) 40 40, auto;
+}
+
+.img_box {
+    transition: all 0.3s ease-in-out;
+}
+
+.img_box:hover{
+    box-shadow: 3px 3px 8px #0000002c;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 클릭효과 active */
+.photo_box:active {
+    cursor: url(../img/cursor6.png) 40 40, auto;
+}
+
+.page_content {
+    display: none;
+    width: 100%;
+}
+
+.page_content.active {
+    display: flex !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.img_box {
+    width: 400px;
+    height: 470px;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.img_box .photo {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.img_box2 .photo {
+    height: 270px;
+}
+
+.img_box .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    /* 크기 변할 때 렌더링 떨림 방지 */
+    -webkit-backface-visibility: hidden;
+}
+
+.img_box:hover .photo img {
+    transform: scale(1.06);
+}
+
+.photo_text {
+    padding: 20px;
+}
+
+.photo_title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.photo_date {
+    font-size: 16px;
+    color: #555;
+}
+
+.img_box2 {
+    width: 630px;
+    height: 390px;
+    margin-top: 60px;
+}
+
+.img_box2 .photo img {
+    height: 270px;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.pagination .page_numbers {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination .page_numbers li {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagination .page_numbers li:hover,
+.pagination .page_numbers li.active {
+    background-color: #363E53;
+    color: #fff;
+}
+
+.pagination .prev img,
+.pagination .next img {
+    width: 8px;
+    height: 11px;
+}
+
+
+
+/* 이미지 모달 팝업 스타일 */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-img {
+    height: 65vh;
+    width: auto;
+    max-width: 95vw;
+    object-fit: contain;
+}
+
+/* ★★★ section 2 (뉴스) ★★★ */
+.section_2_wrap {
+    height: 1580px;
+    background-color: #E7E9ED;
+    position: relative;
+    z-index: 1;
+    margin-bottom: -270px;
+}
+
+.section_2 {
+    width: 1320px;
+    height: 1580px;
+    padding-top: 100px;
+    margin: 0px auto;
+    box-sizing: border-box;
+}
+
+.news_box {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.news_img {
+    width: 450px;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.news_img img {
+    transition: all 0.3s ease-in-out;
+}
+
+.news_img:hover img {
+    transform: scale(1.06);
+}
+
+.news_text {
+    padding-top: 12px;
+}
+
+.news {
+    box-sizing: border-box;
+    padding-top: 7px;
+    text-align: center;
+    width: 90px;
+    height: 36px;
+    color: #fff;
+    background-color: #5D6D8F;
+    border-radius: 25px;
+    margin-bottom: 18px;
+}
+
+.news_title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.news_contents {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 30px 0px 34px 0px;
+}
+
+.news_date {
+    color: #7d7d7d;
+    font-size: 16px;
+}
+
+/* footer */
+
+.footer-wrap {
+    width: 100%;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: auto;
+    z-index: 8;
+}
+
+/* 
+   wave design 
+*/
+.footer-wrap svg {
+    display: block;
+    width: 100%;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.footer-body {
+    flex: 1;
+    background-color: #363E53;
+}
+
+/* wave animation */
+.wave {
+    animation: wave 4s linear infinite;
+}
+
+#wave2 {
+    fill: #293145;
+    animation-duration: 5s;
+    animation-direction: reverse;
+}
+
+#wave1 {
+    fill: #363E53;
+    animation-duration: 3s;
+}
+
+@keyframes wave {
+    to {
+        transform: translateX(-120px);
+    }
+}
+
+/* footer content */
+.footer-content {
+    box-sizing: border-box;
+    padding-top: 70px;
+    width: 1320px;
+    margin: 0px auto;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_name {
+    font-weight: 600;
+    font-size: 48px;
+}
+
+.footer_date {
+    font-size: 38px;
+}
+
+.footer_copy {
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 60px;
+}
+
+.footer_link {
+    padding-top: 30px;
+    padding-right: 50px;
+}
+
+.footer_link_list li {
+    line-height: 40px;
+}
+
+.footer_link_list a {
+    display: block;
+    font-weight: 600;
+}
+
+.footer_link_list a:hover {
+    color: #F7D6B2;
+}
