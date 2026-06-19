@@ -43,7 +43,7 @@ body {
 .gnb {
     display: flex;
     gap: 110px;
-position: relative;
+    position: relative;
 }
 
 .gnb>li {
@@ -268,7 +268,6 @@ html {
     width: 397px;
     height: 235px;
     background: url(../img/movie_motion.png) no-repeat center;
-    cursor: url(../img/cursor3.png) 0 0, pointer;
 }
 
 .movie_motion:hover {
@@ -304,29 +303,27 @@ html {
     height: 1331px;
     background: url(../img/section_bg.png) no-repeat center;
     background-size: cover;
-    cursor: url(../img/cursor3.png) 0 0, pointer;
+    /* cursor: url(../img/cursor3.png) 0 0, pointer; */
     position: relative;
     z-index: 1;
     margin-bottom: -270px;
 
 }
 
-.section_2_wrap:active {
-    /* 클릭효과 */
-    cursor: url(../img/cursor4.png) 0 0, pointer;
-}
-.section_2{
+.section_2 {
     box-sizing: border-box;
     width: 1320px;
     margin: 0px auto;
     height: 1331px;
-        padding-top: 100px;
+    padding-top: 100px;
 }
+
 .slider-wrap {
     width: 1320px;
     margin: 0 auto;
     position: relative;
 }
+
 
 .slider-viewport {
     width: 100%;
@@ -337,12 +334,14 @@ html {
 .slider-track {
     display: flex;
     gap: 60px;
+
 }
 
 
 .slide {
     width: 630px;
     flex-shrink: 0;
+
 }
 
 
@@ -352,8 +351,12 @@ html {
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
+    cursor: url(../img/cursor3.png) 0 0, pointer;
 }
-
+.movie-img:active {
+    /* 클릭효과 */
+    cursor: url(../img/cursor4.png) 0 0, pointer;
+}
 .img_wrap {
     width: 630px;
     height: 400px;
@@ -449,6 +452,7 @@ html {
     justify-content: center;
     gap: 12px;
     margin-top: 70px;
+
 }
 
 .dot {
