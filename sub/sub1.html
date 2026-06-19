@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1400">
-    <title>MAFF</title>
+    <title>소개│MAFF</title>
 
     <!-- 내 CSS -->
     <link rel="stylesheet" href="../css/style2.css">
 
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
+
     <!-- pretendard 폰트 -->
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <!-- aos -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 </head>
 
@@ -23,41 +29,79 @@
                 <a href="../index.html"><img src="../img/header_logo.png" alt="header_logo"></a>
             </h1>
             <ul class="gnb">
-                <li class="on"><a href="../sub/sub1.html">MAFF</a></li>
-                <li><a href="../sub/sub2.html">프로그램</a></li>
-                <li><a href="#">상영/예매</a></li>
-                <li><a href="#">미디어</a></li>
-                <li><a href="#">커뮤니티</a></li>
+                <li class="on"><a href="../sub/sub1.html">MAFF</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub1.html">소개</a></li>
+                        <li><a href="../sub/sub1.html#outlineSection">개최개요</a></li>
+                        <li><a href="../sub/sub1.html#locationSection">오시는 길</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub2.html">프로그램</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub2.html">섹션</a></li>
+                        <li><a href="../sub/sub2.html#movieSection">상영작</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub3.html">상영/예매</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub3.html">상영 시간표</a></li>
+                        <li><a href="../sub/sub3.html#howSection">예매 안내</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub4.html">미디어</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub4.html">사진</a></li>
+                        <li><a href="../sub/sub4.html#newsSection">뉴스</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub5.html">커뮤니티</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub5.html">FAQ</a></li>
+                        <li><a href="../sub/sub5.html#eventSection">이벤트</a></li>
+                        <li><a href="../sub/sub5.html#reviewSection">상영작 리뷰</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
     <!-- header wrap end -->
 
-    <div class="section_1_wrap">
-        <!-- section_1_wrap start -->
-        <div class="section_1">
-            <p class="section_title">소개</p>
+    <div id="section_1_wrap">
+        <!-- section_1 wrap start -->
+
+        <!-- 영상 때문에 위로 뺀 section title -->
+        <p class="section_title about">소개</p>
+
+        <div class="video_wrap">
+            <video src="../img/about_maff3.mp4" autoplay loop muted></video>
+        </div>
+        <div class="section_1" id="aboutSection">
+
             <div class="about_contents">
-                <p class="about_b">MIDNIGHT AFTERGLOW FILM FESTIVAL(MAFF)은 </p>
-                <p class="about_s first">해운대의 밤바다와 영화를 함께 즐길 수 있는 영화제로, <br>
+                <p class="about_b" data-aos="fade-up" data-aos-delay="400" data-aos-anchor="#aboutSection">MIDNIGHT
+                    AFTERGLOW FILM FESTIVAL(MAFF)은 </p>
+                <p class="about_s first" data-aos="fade-up" data-aos-delay="600" data-aos-anchor="#aboutSection">해운대의
+                    밤바다와 영화를 함께 즐길 수 있는 영화제로, <br>
                     한 편의 영화가 하나의 밤으로 기억되는 특별한 경험을 선사합니다.</p>
-                <p class="about_s">밤의 바다와 파도 소리, 스크린의 빛이 어우러진 공간 속에서 <br>
+                <p class="about_s" data-aos="fade-up" data-aos-delay="800" data-aos-anchor="#aboutSection">밤의 바다와 파도 소리,
+                    스크린의 빛이 어우러진 공간 속에서 <br>
 
                     영화가 끝난 뒤에도 오래도록 마음속에 잔잔한 여운으로 남는 순간들을 담아내고자 합니다.</p>
             </div>
         </div>
     </div>
     <!-- section_1_wrap end -->
-    <div class="section_2">
+    <div class="section_2" id="outlineSection">
         <!-- section_2 start -->
-        <p class="section_title">개최개요</p>
+        <p class="section_title" data-aos="fade-up" data-aos-delay="200" data-aos-anchor="#outlineSection">개최개요</p>
         <div class="poster_text_box">
-            <div class="poster_box">
+            <div class="poster_box" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="#outlineSection">
                 <img src="../img/poster.png" alt="poster">
             </div>
             <div class="text_box">
-                <p class="start">2026년 4월 26일, MAFF 개막!</p>
-                <ul>
+                <p class="start" data-aos="fade-up" data-aos-delay="800" data-aos-anchor="#outlineSection">2026년 4월 26일,
+                    MAFF 개막!</p>
+                <ul data-aos="fade-up" data-aos-delay="1100" data-aos-anchor="#outlineSection">
                     <li><span class="start_stroke">
                             명칭
                         </span>
@@ -89,45 +133,128 @@
                 </ul>
             </div>
         </div>
-
+        <div class="location_motion" data-aos="bounce-two" data-aos-anchor=".section_3">
+            <img src="../img/location_motion.png" alt="location_motion">
+        </div>
     </div>
     <!-- section_2 end -->
+
     <div class="section_3_wrap">
         <!-- section_3_wrap start -->
-        <div class="section_3">
-            <p class="section_title">오시는 길</p>
-            <div class="location">
+        <div class="section_3" id="locationSection">
+            <p class="section_title" data-aos="fade-up" data-aos-delay="200" data-aos-anchor="#locationSection">오시는 길
+            </p>
+
+
+            <div class="location" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="#locationSection">
                 <ul>
                     <li><img src="../img/location_cinema.png" alt="location_cinema">
                         <p><span class="blue">주소</span>
                             <br>
-                             부산광역시 해운대구 해운대로 620 라뮤에뜨빌딩 2층
+                            부산광역시 해운대구 해운대로 620 라뮤에뜨빌딩 2층
                         </p>
                     </li>
                     <li><img src="../img/location_bus.png" alt="location_bus">
                         <p><span class="blue">버스</span>
                             <br>
-                             해운대도시철도역에서 하차
-31, 38, 39, 63, 100, 100-1, 115-1,141, 181, 200, 1001, 3006
+                            해운대도시철도역에서 하차
+                            <br>
+                            31, 38, 39, 63, 100, 100-1, 115-1,141, 181, 200, 1001, 3006
                         </p>
                     </li>
                     <li><img src="../img/location_subway.png" alt="location_subway">
                         <p><span class="blue">지하철</span>
                             <br>
-                             해운대역 7번 출구에서 도보 1분
+                            해운대역 7번 출구에서 도보 1분
                         </p>
                     </li>
                     <li><img src="../img/location_car.png" alt="location_car">
                         <p><span class="blue">자가용</span>
                             <br>
-                             내비게이션에 ‘CGV 해운대’ 검색 <br>건물 내 주차장 및 인근 공영주차장 이용 가능
+                            내비게이션에 ‘CGV 해운대’ 검색 <br>건물 내 주차장 및 인근 공영주차장 이용 가능
                         </p>
                     </li>
-                
+
                 </ul>
+                <!-- 지도 -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.74512226558!2d129.15591707522077!3d35.162976772759016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35688d5e17e0a51d%3A0xfcb0079706e7fe92!2zQ0dWIO2VtOyatOuMgA!5e0!3m2!1sko!2skr!4v1780561845059!5m2!1sko!2skr"
+                    width="780" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
+    <!-- section 3 wrap end -->
+    <footer class="footer-wrap">
+        <!-- footer wrap start -->
+        <svg class="gooeff" viewBox="0 0 120 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="
+                               1 0 0 0 0  
+                               0 1 0 0 0  
+                               0 0 1 0 0  
+                               0 0 0 13 -9" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+
+                <path id="wave"
+                    d="M 0,14 C 30,2 30,26 60,14 C 90,2 90,26 120,14 C 150,2 150,26 180,14 C 210,2 210,26 240,14 v 28 h -240 z" />
+            </defs>
+
+            <use id="wave2" class="wave" xlink:href="#wave" x="0" y="2"></use>
+            <use id="wave1" class="wave" xlink:href="#wave" x="0" y="6"></use>
+        </svg>
+
+        <div class="footer-body">
+            <div class="footer-content">
+                <div class="footer_name">
+                    <p><span class="footer_date">2026</span> <br>
+                        MIDNIGHT AFTERGLOW <br>
+                        FILM FESTIVAL</p>
+                    <p class="footer_copy">Copyright ⓒ 2026 MAFF All rights reserved.</p>
+                </div>
+                <div class="footer_link
+">
+                    <ul class="footer_link_list">
+                        <li><a href="./sub1.html">About MAFF</a></li>
+                        <li><a href="./sub2.html">프로그램</a></li>
+                        <li><a href="./sub3.html">상영/예매</a></li>
+                        <li><a href="./sub4.html">미디어</a></li>
+                        <li><a href="./sub5.html">커뮤니티</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+    <!-- footer wrap end -->
+
+    <!-- top button -->
+    <a href="#" class="top_button">
+        <img src="../img/top.png" alt="top_button">
+        <p>TOP</p>
+    </a>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <!-- cdn 제이쿼리 -->
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- aos -->
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+
+    <script src="../js/script2.js"></script>
+    <!-- 내가 꾸민 제이쿼리 -->
 </body>
 
 </html>
