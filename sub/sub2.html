@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1400">
-    <title>PROGREM</title>
+    <title>프로그램│MAFF</title>
 
     <!-- 내 CSS -->
     <link rel="stylesheet" href="../css/style3.css">
 
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
+
     <!-- pretendard 폰트 -->
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <!-- aos -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -22,38 +28,321 @@
                 <a href="../index.html"><img src="../img/header_logo.png" alt="header_logo"></a>
             </h1>
             <ul class="gnb">
-                <li><a href="../sub/sub1.html">MAFF</a></li>
-                <li><a href="../sub/sub2.html">프로그램</a></li>
-                <li><a href="#">상영/예매</a></li>
-                <li><a href="#">미디어</a></li>
-                <li><a href="#">커뮤니티</a></li>
+                <li><a href="../sub/sub1.html">MAFF</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub1.html">소개</a></li>
+                        <li><a href="../sub/sub1.html#outlineSection">개최개요</a></li>
+                        <li><a href="../sub/sub1.html#locationSection">오시는 길</a></li>
+                    </ul>
+                </li>
+                <li class="on"><a href="../sub/sub2.html">프로그램</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub2.html">섹션</a></li>
+                        <li><a href="../sub/sub2.html#movieSection">상영작</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub3.html">상영/예매</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub3.html">상영 시간표</a></li>
+                        <li><a href="../sub/sub3.html#howSection">예매 안내</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub4.html">미디어</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub4.html">사진</a></li>
+                        <li><a href="../sub/sub4.html#newsSection">뉴스</a></li>
+                    </ul>
+                </li>
+                <li><a href="../sub/sub5.html">커뮤니티</a>
+                    <ul class="submenu">
+                        <li><a href="../sub/sub5.html">FAQ</a></li>
+                        <li><a href="../sub/sub5.html#eventSection">이벤트</a></li>
+                        <li><a href="../sub/sub5.html#reviewSection">상영작 리뷰</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
     <!-- header wrap end -->
 
-    <div class="section_1">
+    <div class="section_1" id="sectionSection">
         <!-- section_1 start -->
         <p class="section_title">섹션</p>
-        <div class="cinema">
+
+        <div class="cinema" data-aos="fade-up" data-aos-delay="200" data-aos-anchor="#sectionSection">
             <div class="cinema_img world">
                 <p>월드시네마</p>
             </div>
-            <div class="cinema_text">
+            <div class="cinema_text" data-aos="fade-right" data-aos-delay="500" data-aos-anchor="#sectionSection">
                 <p class="section_name">WORLD CINEMA</p>
+                <p>세계 각국에서 제작된 다양한 주제와 <br> 장르의 영화들을 선보이는 섹션입니다</p>
+                <p class="cinema_name">셰이프 오브 워터, 마티아스와 막심</p>
             </div>
         </div>
 
+        <div class="cinema right">
+            <div class="cinema_text" data-aos="fade-left" data-aos-delay="1100" data-aos-anchor="#sectionSection">
+                <p class="section_name">KOREAN CINEMA</p>
+                <p>한국영화의 역량과 흐름을 만끽할 수 있는 <br> 다양한 대표작을 선보이는 섹션입니다</p>
+                <p class="cinema_name">헤어질 결심</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="800" data-aos-anchor="#sectionSection">
+                <div class="cinema_img korean">
+                    <p>코리안시네마</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cinema">
+            <div data-aos="fade-up" data-aos-delay="1400" data-aos-anchor="#sectionSection">
+                <div class="cinema_img open">
+                    <p>오픈시네마</p>
+                </div>
+            </div>
+            <div class="cinema_text" data-aos="fade-right" data-aos-delay="1700" data-aos-anchor="#sectionSection">
+                <p class="section_name">OPEN CINEMA</p>
+                <p>해운대 밤바다에서 잔잔한 파도와 <br> 영화의 순간을 함께하는 야외 상영 섹션입니다</p>
+                <p class="cinema_name">애프터썬, 조조래빗</p>
+            </div>
+        </div>
+
+        <div class="movie_motion_wrap" data-aos="bounce-two" data-aos-anchor=".section_2">
+            <div class="movie_motion">
+
+            </div>
+        </div>
     </div>
     <!-- section_1 end -->
 
+    <div class="section_2_wrap">
+        <!-- section_2 wrap start -->
+        <div class="section_2" id="movieSection">
+            <p class="section_title" data-aos="fade-up" data-aos-anchor="#movieSection">상영작</p>
+
+            <div class="slider-wrap" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="#movieSection">
+                <!-- slider wrap start -->
+
+                <!-- button -->
+                <button class="nav-btn btn-prev">
+                    <img src="../img/movie_left.png" alt="movie_left">
+                </button>
+                <button class="nav-btn btn-next">
+                    <img src="../img/movie_right.png" alt="movie_right">
+                </button>
+
+                <div class="slider-viewport">
+                    <div class="slider-track">
+
+                        <div class="slide">
+                            <div class="img_wrap">
+                                <img src="../img/movie_aftersun.png" alt="movie_aftersun" class="movie-img">
+                            </div>
 
 
+                            <div class="movie-info">
+                                <p class="cinema-name">오픈 시네마</p>
+                                <p class="movie-title-kr">애프터썬</p>
+                                <p class="movie-title-en">Aftersun</p>
+                                <hr class="divider">
+                                <p class="movie-details">Charlotte Wells • 2022 • 영국 • 101min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+
+                            <div class="img_wrap"><img src="../img/movie_water.png" alt="movie_water" class="movie-img">
+                            </div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">월드 시네마</p>
+                                <p class="movie-title-kr">세이프 오브 워터</p>
+                                <p class="movie-title-en">The Shape of Water</p>
+                                <hr class="divider">
+                                <p class="movie-details">Guillermo del Toro • 2017 • 미국 • 123min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="img_wrap"><img src="../img/movie_oceans.png" alt="movie_oceans"
+                                    class="movie-img"></div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">월드 시네마</p>
+                                <p class="movie-title-kr">파도가 지나간 자리</p>
+                                <p class="movie-title-en">The Light Between Oceans</p>
+                                <hr class="divider">
+                                <p class="movie-details">Derek Cianfrance • 2017 • 미국 • 132min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+
+                            <div class="img_wrap"><img src="../img/movie_suite.png" alt="movie_suite" class="movie-img">
+                            </div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">월드 시네마</p>
+                                <p class="movie-title-kr">스윗 프랑세즈</p>
+                                <p class="movie-title-en">Suite Francaise</p>
+                                <hr class="divider">
+                                <p class="movie-details">Saul Dibb • 2014 • 영국 • 107min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+
+                            <div class="img_wrap"><img src="../img/movie_hg.png" alt="movie_hg" class="movie-img"></div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">코리안 시네마</p>
+                                <p class="movie-title-kr">헤어질 결심</p>
+                                <p class="movie-title-en">Decision To Leave</p>
+                                <hr class="divider">
+                                <p class="movie-details">박찬욱 • 2022 • 한국 • 138min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="img_wrap"> <img src="../img/movie_cmbyn.png" alt="movie_cmbyn"
+                                    class="movie-img"></div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">월드 시네마</p>
+                                <p class="movie-title-kr">콜 미 바이 유어 네임</p>
+                                <p class="movie-title-en">Call Me by Your Name</p>
+                                <hr class="divider">
+                                <p class="movie-details">Luca Guadagnino • 2017 • 이탈리아 • 132min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="img_wrap"><img src="../img/movie_mam.png" alt="movie_mam" class="movie-img">
+                            </div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">월드 시네마</p>
+                                <p class="movie-title-kr">마티아스와 막심</p>
+                                <p class="movie-title-en">Matthias & Maxime</p>
+                                <hr class="divider">
+                                <p class="movie-details">Xavier Dolan • 2020 • 프랑스 • 120min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+
+                            <div class="img_wrap"><img src="../img/movie_jojo.png" alt="movie_jojo" class="movie-img">
+                            </div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">오픈 시네마</p>
+                                <p class="movie-title-kr">조조 래빗</p>
+                                <p class="movie-title-en">Jojo Rabbit</p>
+                                <hr class="divider">
+                                <p class="movie-details">Taika Waititi • 2020 • 미국 • 108min</p>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="img_wrap"><img src="../img/movie_holiday.png" alt="movie_holiday"
+                                    class="movie-img"></div>
+
+                            <div class="movie-info">
+                                <p class="cinema-name">오픈 시네마</p>
+                                <p class="movie-title-kr">로맨틱 홀리데이</p>
+                                <p class="movie-title-en">The Holiday</p>
+                                <hr class="divider">
+                                <p class="movie-details">Nancy Meyers • 2006 • 미국 • 135min</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <!-- dot -->
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+            </div>
+            <!-- slider wrap end -->
+        </div>
+    </div>
+    <!-- section_2 wrap end -->
+
+    <footer class="footer-wrap">
+        <!-- footer wrap start -->
+        <svg class="gooeff" viewBox="0 0 120 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="
+                               1 0 0 0 0  
+                               0 1 0 0 0  
+                               0 0 1 0 0  
+                               0 0 0 13 -9" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+
+                <path id="wave"
+                    d="M 0,14 C 30,2 30,26 60,14 C 90,2 90,26 120,14 C 150,2 150,26 180,14 C 210,2 210,26 240,14 v 28 h -240 z" />
+            </defs>
+
+            <use id="wave2" class="wave" xlink:href="#wave" x="0" y="2"></use>
+            <use id="wave1" class="wave" xlink:href="#wave" x="0" y="6"></use>
+        </svg>
+
+        <div class="footer-body">
+            <div class="footer-content">
+                <div class="footer_name">
+                    <p><span class="footer_date">2026</span> <br>
+                        MIDNIGHT AFTERGLOW <br>
+                        FILM FESTIVAL</p>
+                    <p class="footer_copy">Copyright ⓒ 2026 MAFF All rights reserved.</p>
+                </div>
+                <div class="footer_link
+">
+                    <ul class="footer_link_list">
+                        <li><a href="./sub1.html">About MAFF</a></li>
+                        <li><a href="./sub2.html">프로그램</a></li>
+                        <li><a href="./sub3.html">상영/예매</a></li>
+                        <li><a href="./sub4.html">미디어</a></li>
+                        <li><a href="./sub5.html">커뮤니티</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+    <!-- footer wrap end -->
 
     <!-- top button -->
-    <a href="#main_visual_wrap" class="top_button">
-        <img src="../img/top_button.png" alt="top_button">
+    <a href="#" class="top_button">
+        <img src="../img/top.png" alt="top_button">
+        <p>TOP</p>
     </a>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <!-- cdn 제이쿼리 -->
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- aos -->
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+
+    <script src="../js/script3.js"></script>
+    <!-- 내가 꾸민 제이쿼리 -->
 </body>
 
 </html>
