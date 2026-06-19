@@ -19,7 +19,7 @@ body {
 
 }
 
-
+/* 흘러가는 글씨 폰트 */
 @font-face {
     font-family: 'TtTogether';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
@@ -27,7 +27,7 @@ body {
     font-display: swap;
 }
 
-/* header wrap !!!!! */
+/* ★★★ header wrap ★★★ */
 .header_wrap {
     background-color: #fff;
     height: 90px;
@@ -50,11 +50,15 @@ body {
 
 .gnb {
     display: flex;
-
+    gap: 110px;
+position: relative;
 }
 
 .gnb>li {
-    padding-left: 140px;
+
+    position: relative;
+    /* submenu 기준 */
+    text-align: center;
 }
 
 .gnb>li>a {
@@ -62,13 +66,15 @@ body {
     display: inline-block;
     font-size: 20px;
     font-weight: 700;
-    padding: 16px 0px 30px;
+    padding: 30px 10px;
     text-decoration: none;
     position: relative;
+    /* .gnb>li>a::before 기준 */
     transition: all 0.3s ease;
+    margin-top: -14px;
 }
 
-.gnb>li>a:hover {
+.gnb>li:hover>a {
     transform: translateY(-3px);
     color: #344161;
 }
@@ -88,8 +94,44 @@ body {
     transition: transform 0.3s ease;
 }
 
-.gnb>li>a:hover::before {
+.gnb>li:hover>a::before {
     transform: scaleY(1);
+}
+
+.submenu li a {
+    padding: 20px;
+    display: inline-block;
+    text-align: center;
+
+    font-weight: 600;
+
+
+}
+
+.submenu {
+    border: 1px solid #7d7d7d38;
+    position: absolute;
+    top: 100%;
+    width: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .30s ease, transform .30s ease, visibility .30s ease;
+    visibility: hidden;
+    background-color: #ffffffee;
+}
+
+.submenu li a:hover {
+    color: #344161;
+    /* background: url(../img/gnb2.png) no-repeat right 10px top 5px #fff; */
+    font-weight: 700;
+}
+
+.gnb>li:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* ★★★★ main visual ★★★★ */
@@ -153,6 +195,12 @@ html {
 }
 
 /* ★★★★ section 1 (추천상영작) ★★★★ */
+.section_1_wrap {
+    height: 1000px;
+    background: url(../img/movie_bg.png) no-repeat center center;
+    background-size: cover;
+}
+
 .section_1 {
     width: 1320px;
     height: 1000px;
@@ -180,7 +228,7 @@ html {
     overflow: hidden;
 }
 
-/* 포스터 아이템 기본 공통 스타일 (부드러운 크기/위치 전환 효과) */
+/* 포스터 아이템 공통 스타일*/
 .poster-item {
     position: absolute;
     transition: all 0.5s ease-in-out;
@@ -189,11 +237,10 @@ html {
 }
 
 .poster-item:active {
-    /* [클릭 효과] 슬레이트가 '딱!' 하고 닫힌 모양으로 변경 */
+    /* 클릭효과 */
     cursor: url(../img/cursor4.png) 0 0, pointer;
 }
 
-/* 포스터 이미지 자체에만 어두워지는 애니메이션 효과 부여 */
 .poster-img {
     width: 100%;
     height: 100%;
@@ -208,9 +255,6 @@ html {
     transition: all 0.3s ease-in-out;
 }
 
-/* --- 각 상태별 위치 및 크기 지정 (절대 좌표) --- */
-
-/* 1. 왼쪽으로 완전히 숨겨지는 포스터 */
 .poster-item.hidden-left {
     left: -350px;
     width: 350px;
@@ -220,7 +264,6 @@ html {
     z-index: 1;
 }
 
-/* 2. 왼쪽 사이드 포스터 (크기 350x430, 위에서 75px 떨어짐) */
 .poster-item.prev {
     left: 0;
     width: 350px;
@@ -230,10 +273,8 @@ html {
     z-index: 2;
 }
 
-/* 3. 가운데 메인 포스터 (크기 500x580, 위에서 0px) */
 .poster-item.center {
     left: 410px;
-    /* 사이드 너비 350 + 포스터 간격 60 */
     width: 500px;
     height: 580px;
     top: 0;
@@ -241,10 +282,8 @@ html {
     z-index: 3;
 }
 
-/* 4. 오른쪽 사이드 포스터 (크기 350x430, 위에서 75px 떨어짐) */
 .poster-item.next {
     left: 970px;
-    /* 410 + 메인 너비 500 + 포스터 간격 60 */
     width: 350px;
     height: 430px;
     top: 75px;
@@ -252,7 +291,6 @@ html {
     z-index: 2;
 }
 
-/* 5. 오른쪽으로 완전히 숨겨지는 포스터 */
 .poster-item.hidden-right {
     left: 1320px;
     width: 350px;
@@ -262,26 +300,24 @@ html {
     z-index: 1;
 }
 
-/* 사이드 포스터의 '이미지'만 40% 밝기로 자동 조절 (버튼은 fff 선명함 유지) */
+/* 사이드 포스터의 이미지만 40% 밝기로 자동 조절 (버튼은 선명함 유지) */
 .poster-item.prev .poster-img,
 .poster-item.next .poster-img {
     filter: brightness(0.4);
 }
 
-/* 가운데로 온 포스터 이미지는 원래 밝기(100%)로 선명하게 복구 */
 .poster-item.center .poster-img {
     filter: brightness(1);
 }
 
 
-/* --- ★ 움직임 없는 완벽 고정 버튼 스타일 (24x35, 수평 중앙 290px 배치) --- */
+/* 움직임 없는 고정 버튼 */
 .prev-btn,
 .next-btn {
     position: absolute;
     width: 24px;
     height: 35px;
     top: 290px;
-    /* 사이드 포스터 가로 중심선에 완벽 일치 */
     cursor: pointer;
     z-index: 10;
     cursor: url(../img/cursor3.png) 0 0, pointer;
@@ -298,25 +334,21 @@ html {
     height: 100%;
 }
 
-/* 왼쪽 화살표: 왼쪽 사이드 포스터 안쪽 우측에 고정 */
 .prev-btn {
     left: 306px;
 }
 
-/* 오른쪽 화살표: 오른쪽 사이드 포스터 안쪽 좌측에 고정 */
 .next-btn {
     right: 306px;
 }
 
 
-/* --- ★ 설명글 텍스트 박스 (500x150 아래에서 위로 스르륵 차오르는 효과) --- */
+/* 설명글 텍스트 박스*/
 .text-box {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 500px;
-
-    /* [기본 숨김 상태] 높이를 0으로 숨겨 포스터 밑바닥에 대기시킵니다 */
     height: 0;
     opacity: 0;
     visibility: hidden;
@@ -328,15 +360,12 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    /* 높이와 패딩이 0.1초 딜레이 후 아래에서 위로 부드럽게 차오르도록 설정 */
     transition: height 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.1s,
         padding 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.1s,
         opacity 0.5s ease-out 0.1s,
         visibility 0.9s ease-out 0.1s;
 }
 
-/* 가운데 포스터(.center)가 되면 높이가 150px로 위로 열리며 등장 */
 .poster-item.center .text-box {
     height: 180px;
     padding: 20px;
@@ -344,7 +373,6 @@ html {
     visibility: visible;
 }
 
-/* 요구하신 글자 크기 및 색상 규칙 지정 */
 .text-box .title {
     font-size: 24px;
     color: #fff;
@@ -355,7 +383,6 @@ html {
 .text-box .meta {
     font-size: 18px;
     color: #d4d4d4;
-    /* 두 번째 줄 지정 컬러 */
     margin-bottom: 10px;
 }
 
@@ -365,12 +392,10 @@ html {
     line-height: 1.4;
 }
 
-/* 박스가 부드럽게 열리는 도중에 글자가 깨져서 임의 줄바꿈되는 현상 방지 */
 .text-box .title,
 .text-box .meta,
 .text-box .desc {
     width: 460px;
-    /* 500px - 좌우 패딩 40px */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -378,7 +403,6 @@ html {
 
 .text-box .desc {
     white-space: normal;
-    /* 마지막 줄 설명글은 줄바꿈 허용 */
 }
 
 /* ★★★★ section 2 (상영시간표) ★★★★  */
@@ -787,26 +811,20 @@ html {
     list-style: none;
 }
 
-/* 각 질문 상자 (간격 25px, 외곽선 2px #bbb) */
 .faq>li {
     margin-bottom: 25px;
     border: 2px solid #bbb;
     border-radius: 20px;
-    /* 부드러운 곡률 추가 */
     background-color: #fff;
     overflow: hidden;
-    /* 열릴 때 테두리 밖으로 내용이 빠져나가지 않도록 */
 }
 
-/* 질문 타이틀 바 (높이 86px) */
 .faq_title {
     width: 100%;
     height: 86px;
     display: flex;
     align-items: center;
-    /* 세로 가운데 정렬 */
     justify-content: space-between;
-    /* 양 끝 정렬 */
     padding: 0 30px;
     background-color: #f5f5f5;
     border: none;
@@ -829,12 +847,11 @@ html {
     transition: all 0.2s ease-in-out;
 }
 
-/* 동그라미 Q (60x60) */
+/* 동그라미 Q  */
 .faq_title .q {
     width: 60px;
     height: 60px;
     background-color: #5D6D8F;
-    /* 스크린샷과 유사한 네이비/블루 계열 */
     color: #fff;
     font-size: 30px;
     font-family: 'Pretendard';
@@ -845,20 +862,16 @@ html {
     justify-content: center;
     margin-right: 20px;
     flex-shrink: 0;
-    /* 크기 고정 */
 }
 
-/* 질문 텍스트 (24px, #333) */
 .faq_title .text {
     font-family: 'pretendard';
     font-size: 24px;
     font-weight: 700;
     color: #333;
     flex-grow: 1;
-    /* 남은 공간 채우기 */
 }
 
-/* 화살표 아이콘 영역 및 애니메이션 */
 .faq_title .arrow {
     display: flex;
     align-items: center;
@@ -868,38 +881,28 @@ html {
 
 .faq_title .arrow img {
     transition: transform 0.3s ease;
-    /* 화살표가 0.3초 동안 부드럽게 회전 */
 }
 
-/* 활성화되었을 때(열렸을 때) 화살표 뒤집기 */
 .faq>li.active .faq_title .arrow img {
     transform: rotate(180deg);
-    /* 180도 회전하여 위를 보게 만듦 */
 }
 
-/* 답변 영역 (기본적으로 숨김, 18px, #333) */
+
 .faq_content {
     display: none;
-    /* 제이쿼리 slideToggle을 위해 기본 숨김 */
     padding: 25px 30px 35px 110px;
-    /* 왼쪽 Q 아이콘 위치만큼 여백 부여 */
     font-size: 18px;
     line-height: 1.6;
     color: #333;
     border-top: 1px solid #f0f0f0;
-    /* 내용 구분을 위한 얇은 선 */
 }
 
-/* ★★★★ section 5 ★★★★ */
+/* ★★★★ section 5 (미디어)★★★★ */
 .section_5_wrap {
     height: 1254px;
     background-color: #1E1F24;
     position: relative;
     z-index: 1;
-    /* 푸터보다 레이어를 낮게 깔아줍니다 */
-
-    /*아래쪽 마진을 음수(-)로 주어 푸터를 위로 당겨옵니다. */
-
     margin-bottom: -200px;
 }
 
@@ -913,20 +916,14 @@ html {
 .media-header {
     display: flex;
     justify-content: flex-end;
-    /* 오른쪽 끝으로 밀기 */
     margin-bottom: 30px;
-    /* 사진과의 간격 */
 }
 
-
-/* 60x60 버튼 설정 */
 .media-controls {
     display: flex;
     gap: 20px;
-    /* 버튼 두 개 사이의 간격 */
 }
 
-/* 60x60 버튼 크기 고정 */
 .media-prev,
 .media-next {
     width: 50px;
@@ -951,28 +948,22 @@ html {
     background-color: #F7D6B2;
 }
 
-/* 슬라이더 영역 (1320px 넘치면 안 보이게 숨김) */
 .media-slider-wrap {
     width: 1320px;
     overflow: hidden;
 }
 
-/* 실제로 기차처럼 길게 늘어서서 이동할 트랙 */
+
 .media-track {
     display: flex;
     gap: 30px;
-    /* 사진 사이 간격 (420*3=1260, 1320-1260=60. 60/2=30px) */
     transition: transform 0.5s ease-in-out;
-    /* 부드럽게 넘어가기 */
 }
 
-/* 개별 사진 아이템 */
+
 .media-item {
     width: 420px;
-
     flex-shrink: 0;
-    /* 크기 쪼그라들지 않게 고정 */
-
 }
 
 .media-thumb {
@@ -986,24 +977,23 @@ html {
     height: 520px;
     object-fit: cover;
     display: block;
-    cursor: url(../img/cursor2.png) 40 40, auto;
+    cursor: url(../img/cursor5.png) 40 40, auto;
     transition: transform 0.5s ease;
 
 }
 
 .media-item img:active {
-    cursor: url(../img/cursor1.png) 40 40, auto;
+    cursor: url(../img/cursor6.png) 40 40, auto;
 }
 
 .media-item img:hover {
     transform: scale(1.06);
 }
 
-/* 텍스트 스타일 */
+
 .media-text {
     margin-top: 20px;
     color: #fff;
-    /* 바탕이 어두우니 글씨는 흰색 */
 }
 
 .media-sub {
@@ -1023,7 +1013,6 @@ html {
     width: 100%;
     height: 540px;
     display: flex;
-    /* ◀ 2. 파도와 본문을 세로로 정렬하기 위함 */
     flex-direction: column;
     position: relative;
     margin-top: auto;
@@ -1037,19 +1026,12 @@ html {
     display: block;
     width: 100%;
     height: 150px;
-    /* 파도 부분 높이 150px */
     flex-shrink: 0;
-    /* 푸터 높이가 바뀌어도 파도가 찌그러지지 않게 고정 */
 }
 
-/*  푸터 바디 (나머지 높이 채우기)
- */
 .footer-body {
     flex: 1;
-    /* ◀ 3. 전체 540px 중 파도(150px)를 제외한 나머지(390px)를 자동으로 채움 */
     background-color: #363E53;
-    /* ◀ 4. 중요! 앞파도 색상(#363E53)과 똑같이 맞춰야 파도와 본문이 자연스럽게 이어집니다. */
-
 }
 
 /* wave animation */
@@ -1065,7 +1047,6 @@ html {
 
 #wave1 {
     fill: #363E53;
-    /* 이 색상과 .footer-body의 배경색이 같아야 합니다 */
     animation-duration: 3s;
 }
 
@@ -1122,39 +1103,27 @@ html {
 /* 이미지 모달 팝업 스타일 */
 .image-modal {
     display: none;
-    /* 기본적으로 숨김 */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    /* 반투명 검은 배경 */
     z-index: 9999;
-    /* 화면 제일 위로 */
     cursor: pointer;
 }
 
 
-
-/* 팝업 안의 이미지 화면 정중앙 배치 */
 .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* 기존에 있던 max-width 제한을 지워서 더 커질 수 있게 풀어줍니다 */
 }
 
 .modal-img {
-    /* ★ 핵심: 원래 크기를 무시하고 무조건 화면 세로 길이의 80%까지 큼지막하게 늘림 */
     height: 80vh;
-
-    /* 세로가 커진 비율에 맞춰서 가로도 찌그러지지 않게 자동 조절 */
     width: auto;
-
-    /* 혹시 모를 안전장치: 모니터 가로 폭을 넘어가지는 않게 제한 */
     max-width: 95vw;
-
     object-fit: contain;
 }
